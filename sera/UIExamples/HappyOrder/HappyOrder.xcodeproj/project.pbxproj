@@ -12,6 +12,7 @@
 		A4ED72F92D3B9F9300C01289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4ED72F82D3B9F9300C01289 /* Assets.xcassets */; };
 		A4ED72FC2D3B9F9300C01289 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4ED72FB2D3B9F9300C01289 /* Preview Assets.xcassets */; };
 		A4ED73032D3BA10E00C01289 /* MainBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED73022D3BA10E00C01289 /* MainBannerView.swift */; };
+		A4ED73052D3BEBD700C01289 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED73042D3BEBD700C01289 /* MainTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		A4ED72F82D3B9F9300C01289 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A4ED72FB2D3B9F9300C01289 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A4ED73022D3BA10E00C01289 /* MainBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBannerView.swift; sourceTree = "<group>"; };
+		A4ED73042D3BEBD700C01289 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				A4ED72F42D3B9F9100C01289 /* HappyOrderApp.swift */,
 				A4ED72F62D3B9F9100C01289 /* ContentView.swift */,
+				A4ED73042D3BEBD700C01289 /* MainTabView.swift */,
 				A4ED73022D3BA10E00C01289 /* MainBannerView.swift */,
 				A4ED72F82D3B9F9300C01289 /* Assets.xcassets */,
 				A4ED72FA2D3B9F9300C01289 /* Preview Content */,
@@ -143,6 +146,7 @@
 				A4ED72F72D3B9F9100C01289 /* ContentView.swift in Sources */,
 				A4ED72F52D3B9F9100C01289 /* HappyOrderApp.swift in Sources */,
 				A4ED73032D3BA10E00C01289 /* MainBannerView.swift in Sources */,
+				A4ED73052D3BEBD700C01289 /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

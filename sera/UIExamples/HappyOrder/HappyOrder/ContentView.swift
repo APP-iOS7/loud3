@@ -9,9 +9,11 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
+        VStack { // (spacing: 0)
             // 메인 배너 뷰
             MainBannerView()
+            // 탭바 뷰
+            MainTabView()
         }
     }
 }
