@@ -14,6 +14,9 @@ struct ContentView: View {
             MainBannerView()
             // 탭바 뷰
             MainTabView()
+            // 메인 메뉴카테고리 뷰
+            MainCategoryView()
+            // TODO: 브랜드 뷰
         }
     }
 }
