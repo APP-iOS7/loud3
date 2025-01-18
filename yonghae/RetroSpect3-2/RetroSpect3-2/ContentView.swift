@@ -13,25 +13,19 @@ struct ContentView: View {
     
     
     // 분류를 위한 이미지 더미 데이터입니다
-    /// Q.1
-    /// 객체로 데이터를 전달하는 방식이 좋은데..
-    /// 객체는 순서의 보장을 해주지 않음 그렇다고 forEach에 넣을 때 key - value로 배열로 변환해도
-    /// 초기엔 dictionary이기 때문데 순서가 계속 바뀜....
-    /// 원하는건 객체 순서를 보장하면서 data에 key-value로 전달...
-    /// A.1
-    /// 깨달았습니다.. 아래에 나오지만 구조체가 희망이에요
-    /// struct 배열로 만들면 객체처럼 여러가지 정보를 담을 수 있고 순서의 보장도 됩니다!!!
-    let dumyCategoryImageData: Dictionary<String, String> = [
-        "베이커리" : "bakery",
-        "분식/한식" : "bunsicHansic",
-        "버거" : "buger",
-        "카페" : "cafe",
-        "치킨" : "chicken",
-        "편의점" : "constore",
-        "디저트" : "dessert",
-        "파스타/피자" : "pasteFija",
-        "샐러드" : "salad",
-        "샌드위치" : "sandwich"
+    
+    /// 기존 원시타입이던 객체를 구조체를 통해 순서의 보장을 위해 바꿧습니다.
+    let dumyCategoryImageData: [DetailFoodModel] = [
+        DetailFoodModel(title: "베이커리", imageName: "bakery"),
+        DetailFoodModel(title: "분식/한식", imageName: "bunsicHansic"),
+        DetailFoodModel(title: "버거", imageName: "buger"),
+        DetailFoodModel(title: "카페", imageName: "cafe"),
+        DetailFoodModel(title: "치킨", imageName: "chicken"),
+        DetailFoodModel(title: "편의점", imageName: "constore"),
+        DetailFoodModel(title: "디저트", imageName: "dessert"),
+        DetailFoodModel(title: "파스타/피자", imageName: "pasteFija"),
+        DetailFoodModel(title: "샐러드", imageName: "salad"),
+        DetailFoodModel(title: "샌드위치", imageName: "sandwich"),
     ]
     
     /// 구조체를 통해 데이터를 모델링
@@ -156,16 +150,16 @@ struct MainImageContentView: View {
 
 struct CategoryFoodView: View {
     
-    var dumyCategoryImageData: [String : String]
+    var dumyCategoryImageData: [DetailFoodModel] // 구조체로 model 변경
     let backgroundColor: Color
     let gridItem: [GridItem]
     
     var body: some View {
         HStack {
             LazyVGrid(columns: gridItem, spacing: 10) {
-                ForEach(Array(dumyCategoryImageData.map{(key: $0.key, value: $0.value)}), id: \.key) { title,imagePath in
+                ForEach(dumyCategoryImageData, id: \.self) { categoryData in // 내부 값도 변경
                     VStack {
-                        Image(imagePath)
+                        Image(categoryData.imageName)
                             .resizable()
                             .frame(width: 40, height: 40, alignment: .center)
                             .aspectRatio(contentMode: .fit)
@@ -174,7 +168,7 @@ struct CategoryFoodView: View {
                                 backgroundColor,
                                 in: RoundedRectangle(cornerRadius: 8)
                             )
-                        Text(title)
+                        Text(categoryData.title)
                             .font(.footnote)
                     }
                 }
@@ -200,7 +194,7 @@ struct BottomDetailFoodView: View {
                                 .aspectRatio(contentMode: .fill)
                                 .padding(10)
                                 .background(
-                                    foodData.color,
+                                    foodData.color!, // color 가 required에서 옵셔널이 되었기에 강제 언래핑 합니다
                                     in: RoundedRectangle(cornerRadius: 12)
                                 )
                             Text(foodData.title)
