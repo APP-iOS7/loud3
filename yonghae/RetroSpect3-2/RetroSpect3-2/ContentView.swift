@@ -49,14 +49,38 @@ struct ContentView: View {
     let backgroundColor: Color = Color(red: 241/255, green: 246/255, blue: 240/255)
     
     var body: some View {
-        ScrollView {
-            MainImageContentView()
-            // 여기 하고 아래 뷰에 gap이 있어요
-            MiddleTabBarView()
-            // 중앙 분류 View
-            CategoryFoodView(dumyCategoryImageData: dumyCategoryImageData, backgroundColor: backgroundColor, gridItem: gridItem)
-            // 하단 상세 음식 View
-            BottomDetailFoodView(gridItem: gridItem, backgroundColor: backgroundColor, dumyBottomImageData: dumyBottomImageData)
+        VStack(spacing: 0) {
+            ScrollView {
+                MainImageContentView()
+                // 여기 하고 아래 뷰에 gap이 있어요
+                MiddleTabBarView()
+                // 중앙 분류 View
+                CategoryFoodView(dumyCategoryImageData: dumyCategoryImageData, backgroundColor: backgroundColor, gridItem: gridItem)
+                // 하단 상세 음식 View
+                BottomDetailFoodView(gridItem: gridItem, backgroundColor: backgroundColor, dumyBottomImageData: dumyBottomImageData)
+            }
+            HStack {
+                CustomTabItem(image: "Brand", tabItemName: "브랜드")
+                CustomTabItem(image: "Star", tabItemName: "이벤트")
+                CustomTabItem{
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 14)
+                            .foregroundStyle(.white)
+                        Text("오")
+                            .font(.system(size: 40))
+                            .fontWeight(.bold)
+                            .frame(maxWidth: .infinity ,maxHeight: .infinity)
+                            .foregroundStyle(Color(red: 1/255, green: 167/255, blue: 65/255))
+                    }
+                    .padding(5)
+                    .frame(maxWidth: 70, maxHeight: 70)
+                }
+                CustomTabItem(image: "Order", tabItemName: "주문내역")
+                CustomTabItem(image: "MyProfile", tabItemName: "마이")
+            }
+            .padding(.horizontal)
+            .padding(.bottom, -20)
+            .background(Color(red: 1/255, green: 167/255, blue: 65/255))
         }
     }
 }
