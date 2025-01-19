@@ -10,6 +10,7 @@ import SwiftUI
 struct TestPage4: View {
     var body: some View {
         Text("네번째 텝뷰 페이지")
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 }
 

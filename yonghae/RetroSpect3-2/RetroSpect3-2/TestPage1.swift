@@ -10,6 +10,7 @@ import SwiftUI
 struct TestPage1: View {
     var body: some View {
         Text("첫번째 탭뷰 페이지")
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
     }
 }
 
