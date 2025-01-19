@@ -7,12 +7,21 @@
 
 import SwiftUI
 
+// BottomNavigation의 이미지의 이름을 따라 페이지를 나누기 위한 타입
+enum PageChangeType {
+    case brand
+    case event
+    case main // 오
+    case order
+    case profile
+}
+
+
 struct ContentView: View {
     // Array 반복
     let gridItem = Array(repeating: GridItem(.flexible()), count: 5)
 
     // 분류를 위한 이미지 더미 데이터입니다
-    
     /// 기존 원시타입이던 객체를 구조체를 통해 순서의 보장을 위해 바꿧습니다.
     let dumyCategoryImageData: [DetailFoodModel] = [
         DetailFoodModel(title: "베이커리", imageName: "bakery"),
@@ -49,25 +58,38 @@ struct ContentView: View {
     
     /// category 바인딩 상태를 위해 부모에서 관리합니다
     @State private var categoryItemSelection: Int = 0
+    /// 페이지 이동을 위한 상태 변수
+    @State private var navigationSelection: PageChangeType = .main
     
     var body: some View {
         VStack(spacing: 0) {
-            ScrollView {
-                MainImageContentView()
-                // 여기 하고 아래 뷰에 gap이 있어요
-                MiddleTabBarView(categoryItemSelection: $categoryItemSelection)
-                // 중앙 분류 View
-                CategoryFoodView(
-                    categoryItemSelection: $categoryItemSelection,
-                    dumyCategoryImageData: dumyCategoryImageData,
-                    backgroundColor: backgroundColor,
-                    gridItem: gridItem
-                )
-                // 하단 상세 음식 View
-                BottomDetailFoodView(gridItem: gridItem, backgroundColor: backgroundColor, dumyBottomImageData: dumyBottomImageData)
+            switch navigationSelection {
+            case .brand:
+                TestPage1()
+            case .event:
+                TestPage2()
+            case .main:
+                ScrollView {
+                    MainImageContentView()
+                    // 여기 하고 아래 뷰에 gap이 있어요
+                    MiddleTabBarView(categoryItemSelection: $categoryItemSelection)
+                    // 중앙 분류 View
+                    CategoryFoodView(
+                        categoryItemSelection: $categoryItemSelection,
+                        dumyCategoryImageData: dumyCategoryImageData,
+                        backgroundColor: backgroundColor,
+                        gridItem: gridItem
+                    )
+                    // 하단 상세 음식 View
+                    BottomDetailFoodView(gridItem: gridItem, backgroundColor: backgroundColor, dumyBottomImageData: dumyBottomImageData)
+                }
+            case .order:
+                TestPage3()
+            case .profile:
+                TestPage4()
             }
             // bottom Navigation View
-            CustomNavigationView()
+            CustomNavigationView(navigationSelection: $navigationSelection)
         }
     }
 }
@@ -246,11 +268,13 @@ struct BottomDetailFoodView: View {
 }
 
 struct CustomNavigationView: View {
+    @Binding var navigationSelection: PageChangeType
+    
     var body: some View {
         HStack {
-            CustomTabItem(image: "Brand", tabItemName: "브랜드")
-            CustomTabItem(image: "Star", tabItemName: "이벤트")
-            CustomTabItem{
+            CustomTabItem(image: "Brand", tabItemName: "브랜드", isSelection: .brand ,navigationSelection: $navigationSelection)
+            CustomTabItem(image: "Star", tabItemName: "이벤트", isSelection: .event ,navigationSelection: $navigationSelection)
+            CustomTabItem(navigationSelection: $navigationSelection, isSelection: .main){
                 ZStack {
                     RoundedRectangle(cornerRadius: 14)
                         .foregroundStyle(.white)
@@ -263,8 +287,8 @@ struct CustomNavigationView: View {
                 .padding(5)
                 .frame(maxWidth: 70, maxHeight: 70)
             }
-            CustomTabItem(image: "Order", tabItemName: "주문내역")
-            CustomTabItem(image: "MyProfile", tabItemName: "마이")
+            CustomTabItem(image: "Order", tabItemName: "주문내역", isSelection: .order ,navigationSelection: $navigationSelection)
+            CustomTabItem(image: "MyProfile", tabItemName: "마이", isSelection: .profile ,navigationSelection: $navigationSelection)
         }
         .padding(.horizontal)
         .padding(.bottom, -20)
