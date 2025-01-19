@@ -10,8 +10,7 @@ import SwiftUI
 struct ContentView: View {
     // Array 반복
     let gridItem = Array(repeating: GridItem(.flexible()), count: 5)
-    
-    
+
     // 분류를 위한 이미지 더미 데이터입니다
     
     /// 기존 원시타입이던 객체를 구조체를 통해 순서의 보장을 위해 바꿧습니다.
@@ -35,7 +34,7 @@ struct ContentView: View {
     let dumyBottomImageData: [DetailFoodModel] = [
         DetailFoodModel(title: "파리바게트", imageName: "parisBaguette", color: .white),
         DetailFoodModel(title: "베스킨라빈스", imageName: "baskinlabins", color: Color(red:218/255, green: 26/255, blue: 132/255)),
-        DetailFoodModel(title: "던킨", imageName: "parisBaguette", color: .white),
+        DetailFoodModel(title: "던킨", imageName: "dunkin", color: .white),
         DetailFoodModel(title: "파스쿠찌", imageName: "pascuchi", color: .white),
         DetailFoodModel(title: "쉐이크쉑", imageName: "shakeshck", color: .white),
         DetailFoodModel(title: "파파존스", imageName: "papajons", color: .green),
@@ -48,66 +47,36 @@ struct ContentView: View {
     // 단순한 객체를 위한 상수 매너임
     let backgroundColor: Color = Color(red: 241/255, green: 246/255, blue: 240/255)
     
+    /// category 바인딩 상태를 위해 부모에서 관리합니다
+    @State private var categoryItemSelection: Int = 0
+    
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
                 MainImageContentView()
                 // 여기 하고 아래 뷰에 gap이 있어요
-                MiddleTabBarView()
+                MiddleTabBarView(categoryItemSelection: $categoryItemSelection)
                 // 중앙 분류 View
-                CategoryFoodView(dumyCategoryImageData: dumyCategoryImageData, backgroundColor: backgroundColor, gridItem: gridItem)
+                CategoryFoodView(
+                    categoryItemSelection: $categoryItemSelection,
+                    dumyCategoryImageData: dumyCategoryImageData,
+                    backgroundColor: backgroundColor,
+                    gridItem: gridItem
+                )
                 // 하단 상세 음식 View
                 BottomDetailFoodView(gridItem: gridItem, backgroundColor: backgroundColor, dumyBottomImageData: dumyBottomImageData)
             }
-            HStack {
-                CustomTabItem(image: "Brand", tabItemName: "브랜드")
-                CustomTabItem(image: "Star", tabItemName: "이벤트")
-                CustomTabItem{
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 14)
-                            .foregroundStyle(.white)
-                        Text("오")
-                            .font(.system(size: 40))
-                            .fontWeight(.bold)
-                            .frame(maxWidth: .infinity ,maxHeight: .infinity)
-                            .foregroundStyle(Color(red: 1/255, green: 167/255, blue: 65/255))
-                    }
-                    .padding(5)
-                    .frame(maxWidth: 70, maxHeight: 70)
-                }
-                CustomTabItem(image: "Order", tabItemName: "주문내역")
-                CustomTabItem(image: "MyProfile", tabItemName: "마이")
-            }
-            .padding(.horizontal)
-            .padding(.bottom, -20)
-            .background(Color(red: 1/255, green: 167/255, blue: 65/255))
+            // bottom Navigation View
+            CustomNavigationView()
         }
     }
 }
 
-
-
-struct MiddleTabBarView: View {
-    var body: some View {
-        HStack(spacing:0) {
-            Text("바로배달")
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical)
-                .overlay(alignment: .bottom) {
-                    Rectangle()
-                        .frame(height: 4)
-                        .foregroundStyle(.green)
-                }
-            Text("바로픽업")
-                .frame(maxWidth: .infinity)
-                .padding(.vertical)
-            Text("예약")
-                .frame(maxWidth: .infinity)
-                .padding(.vertical)
-        }
-        .frame(maxWidth: .infinity)
-    }
+// Category 구조페를 동해 MiddleTabBarView 모델링
+struct Category: Identifiable {
+    var id = UUID()
+    var categoryName: String
+    var selection: Int
 }
 
 struct MainImageContentView: View {
@@ -136,7 +105,7 @@ struct MainImageContentView: View {
                             .padding(.vertical, 10 / 2)
                     }
                     .padding([.leading], 10)
-                    Spacer()  
+                    Spacer()
                     
                     Text("01.01 - 01.29")
                         .padding([.leading, .bottom], 10)
@@ -172,7 +141,41 @@ struct MainImageContentView: View {
      }
 }
 
+struct MiddleTabBarView: View {
+    @Binding var categoryItemSelection: Int
+    let categoryList: [Category] = [
+        Category(categoryName: "바로배달", selection: 0),
+        Category(categoryName: "바로픽업", selection: 1),
+        Category(categoryName: "예약", selection: 2)
+    ]
+    var body: some View {
+        HStack(spacing:0) {
+            ForEach(categoryList,id: \.id) { category in
+                Text(category.categoryName)
+                    .fontWeight(category.selection == categoryItemSelection ? .semibold : .regular)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical)
+                    .overlay(alignment: .bottom) {
+                        if categoryItemSelection == category.selection {
+                            Rectangle()
+                                .frame(height: 4)
+                                .foregroundStyle(.green)
+                        }
+                    }
+                    .onTapGesture {
+                        withAnimation(.spring()) {
+                            categoryItemSelection = category.selection
+                        }
+                    }
+            }
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
+
 struct CategoryFoodView: View {
+    
+    @Binding var categoryItemSelection: Int
     
     var dumyCategoryImageData: [DetailFoodModel] // 구조체로 model 변경
     let backgroundColor: Color
@@ -180,22 +183,30 @@ struct CategoryFoodView: View {
     
     var body: some View {
         HStack {
-            LazyVGrid(columns: gridItem, spacing: 10) {
-                ForEach(dumyCategoryImageData, id: \.self) { categoryData in // 내부 값도 변경
-                    VStack {
-                        Image(categoryData.imageName)
-                            .resizable()
-                            .frame(width: 40, height: 40, alignment: .center)
-                            .aspectRatio(contentMode: .fit)
-                            .padding(10)
-                            .background(
-                                backgroundColor,
-                                in: RoundedRectangle(cornerRadius: 8)
-                            )
-                        Text(categoryData.title)
-                            .font(.footnote)
+            if categoryItemSelection == 0 {
+                LazyVGrid(columns: gridItem, spacing: 10) {
+                    ForEach(dumyCategoryImageData, id: \.self) { categoryData in // 내부 값도 변경
+                        VStack {
+                            Image(categoryData.imageName)
+                                .resizable()
+                                .frame(width: 40, height: 40, alignment: .center)
+                                .aspectRatio(contentMode: .fit)
+                                .padding(10)
+                                .background(
+                                    backgroundColor,
+                                    in: RoundedRectangle(cornerRadius: 8)
+                                )
+                            Text(categoryData.title)
+                                .font(.footnote)
+                        }
                     }
                 }
+            }else if categoryItemSelection == 1 {
+                Text("두번째 category 뷰 입니다.")
+                    .frame(maxHeight: .infinity)
+            }else if categoryItemSelection == 2 {
+                Text("세번째 category 뷰 입니다")
+                    .frame(maxHeight: .infinity)
             }
         }
         .padding(13)
@@ -231,6 +242,33 @@ struct BottomDetailFoodView: View {
                     .background(backgroundColor, in: RoundedRectangle(cornerRadius: 22))
             }
             .padding()
+    }
+}
+
+struct CustomNavigationView: View {
+    var body: some View {
+        HStack {
+            CustomTabItem(image: "Brand", tabItemName: "브랜드")
+            CustomTabItem(image: "Star", tabItemName: "이벤트")
+            CustomTabItem{
+                ZStack {
+                    RoundedRectangle(cornerRadius: 14)
+                        .foregroundStyle(.white)
+                    Text("오")
+                        .font(.system(size: 40))
+                        .fontWeight(.bold)
+                        .frame(maxWidth: .infinity ,maxHeight: .infinity)
+                        .foregroundStyle(Color(red: 1/255, green: 167/255, blue: 65/255))
+                }
+                .padding(5)
+                .frame(maxWidth: 70, maxHeight: 70)
+            }
+            CustomTabItem(image: "Order", tabItemName: "주문내역")
+            CustomTabItem(image: "MyProfile", tabItemName: "마이")
+        }
+        .padding(.horizontal)
+        .padding(.bottom, -20)
+        .background(Color(red: 1/255, green: 167/255, blue: 65/255))
     }
 }
 
