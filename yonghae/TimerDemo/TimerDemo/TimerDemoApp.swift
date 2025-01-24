@@ -14,5 +14,6 @@ struct TimerDemoApp: App {
             ContentView()
         }
         .menuBarExtraStyle(.window)
+        .keyboardShortcut("m",modifiers: .command, localization: .automatic)
     }
 }

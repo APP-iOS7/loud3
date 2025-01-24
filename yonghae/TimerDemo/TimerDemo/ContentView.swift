@@ -17,6 +17,8 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ZStack {
+                customExit
+                
                 customColorPicker
                 
                 customProgressView
