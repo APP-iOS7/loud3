@@ -7,30 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A405368D2D4070EA00C1C70E /* MainBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405368C2D4070EA00C1C70E /* MainBrandView.swift */; };
-		A4ED72F52D3B9F9100C01289 /* HappyOrderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED72F42D3B9F9100C01289 /* HappyOrderApp.swift */; };
-		A4ED72F72D3B9F9100C01289 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED72F62D3B9F9100C01289 /* ContentView.swift */; };
-		A4ED72F92D3B9F9300C01289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4ED72F82D3B9F9300C01289 /* Assets.xcassets */; };
-		A4ED72FC2D3B9F9300C01289 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4ED72FB2D3B9F9300C01289 /* Preview Assets.xcassets */; };
-		A4ED73032D3BA10E00C01289 /* MainBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED73022D3BA10E00C01289 /* MainBannerView.swift */; };
-		A4ED73052D3BEBD700C01289 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED73042D3BEBD700C01289 /* MainTabView.swift */; };
-		A4ED73072D3BF6ED00C01289 /* MainCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED73062D3BF6ED00C01289 /* MainCategoryView.swift */; };
+		A4A0D9AF2D4312FA00480C49 /* TimerDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0D9AE2D4312FA00480C49 /* TimerDemoApp.swift */; };
+		A4A0D9B12D4312FA00480C49 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0D9B02D4312FA00480C49 /* ContentView.swift */; };
+		A4A0D9B32D4312FA00480C49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4A0D9B22D4312FA00480C49 /* Assets.xcassets */; };
+		A4A0D9B62D4312FA00480C49 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4A0D9B52D4312FA00480C49 /* Preview Assets.xcassets */; };
+		A4A6A7D72D43265500495CCD /* bebebep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A4A6A7D62D43265500495CCD /* bebebep.mp3 */; };
+		A4A6A7D92D43318000495CCD /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A7D82D43318000495CCD /* TimePickerView.swift */; };
+		A4A6A7DB2D4358F900495CCD /* FinishedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A7DA2D4358F900495CCD /* FinishedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A405368C2D4070EA00C1C70E /* MainBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBrandView.swift; sourceTree = "<group>"; };
-		A4ED72F12D3B9F9100C01289 /* HappyOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4ED72F42D3B9F9100C01289 /* HappyOrderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyOrderApp.swift; sourceTree = "<group>"; };
-		A4ED72F62D3B9F9100C01289 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A4ED72F82D3B9F9300C01289 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A4ED72FB2D3B9F9300C01289 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A4ED73022D3BA10E00C01289 /* MainBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBannerView.swift; sourceTree = "<group>"; };
-		A4ED73042D3BEBD700C01289 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		A4ED73062D3BF6ED00C01289 /* MainCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryView.swift; sourceTree = "<group>"; };
+		A4A0D9AB2D4312FA00480C49 /* TimerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4A0D9AE2D4312FA00480C49 /* TimerDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDemoApp.swift; sourceTree = "<group>"; };
+		A4A0D9B02D4312FA00480C49 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A4A0D9B22D4312FA00480C49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A4A0D9B52D4312FA00480C49 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A4A0D9B72D4312FA00480C49 /* TimerDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TimerDemo.entitlements; sourceTree = "<group>"; };
+		A4A6A7D62D43265500495CCD /* bebebep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = bebebep.mp3; path = ../../../../../Downloads/bebebep.mp3; sourceTree = "<group>"; };
+		A4A6A7D82D43318000495CCD /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
+		A4A6A7DA2D4358F900495CCD /* FinishedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A4ED72EE2D3B9F9100C01289 /* Frameworks */ = {
+		A4A0D9A82D4312FA00480C49 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,41 +39,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A4ED72E82D3B9F9100C01289 = {
+		A4A0D9A22D4312FA00480C49 = {
 			isa = PBXGroup;
 			children = (
-				A4ED72F32D3B9F9100C01289 /* HappyOrder */,
-				A4ED72F22D3B9F9100C01289 /* Products */,
+				A4A0D9AD2D4312FA00480C49 /* TimerDemo */,
+				A4A0D9AC2D4312FA00480C49 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A4ED72F22D3B9F9100C01289 /* Products */ = {
+		A4A0D9AC2D4312FA00480C49 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A4ED72F12D3B9F9100C01289 /* HappyOrder.app */,
+				A4A0D9AB2D4312FA00480C49 /* TimerDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A4ED72F32D3B9F9100C01289 /* HappyOrder */ = {
+		A4A0D9AD2D4312FA00480C49 /* TimerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				A4ED72F42D3B9F9100C01289 /* HappyOrderApp.swift */,
-				A4ED72F62D3B9F9100C01289 /* ContentView.swift */,
-				A4ED73042D3BEBD700C01289 /* MainTabView.swift */,
-				A4ED73022D3BA10E00C01289 /* MainBannerView.swift */,
-				A4ED73062D3BF6ED00C01289 /* MainCategoryView.swift */,
-				A405368C2D4070EA00C1C70E /* MainBrandView.swift */,
-				A4ED72F82D3B9F9300C01289 /* Assets.xcassets */,
-				A4ED72FA2D3B9F9300C01289 /* Preview Content */,
+				A4A0D9AE2D4312FA00480C49 /* TimerDemoApp.swift */,
+				A4A0D9B02D4312FA00480C49 /* ContentView.swift */,
+				A4A6A7DA2D4358F900495CCD /* FinishedView.swift */,
+				A4A6A7D82D43318000495CCD /* TimePickerView.swift */,
+				A4A6A7D62D43265500495CCD /* bebebep.mp3 */,
+				A4A0D9B22D4312FA00480C49 /* Assets.xcassets */,
+				A4A0D9B72D4312FA00480C49 /* TimerDemo.entitlements */,
+				A4A0D9B42D4312FA00480C49 /* Preview Content */,
 			);
-			path = HappyOrder;
+			path = TimerDemo;
 			sourceTree = "<group>";
 		};
-		A4ED72FA2D3B9F9300C01289 /* Preview Content */ = {
+		A4A0D9B42D4312FA00480C49 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				A4ED72FB2D3B9F9300C01289 /* Preview Assets.xcassets */,
+				A4A0D9B52D4312FA00480C49 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -82,39 +81,39 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A4ED72F02D3B9F9100C01289 /* HappyOrder */ = {
+		A4A0D9AA2D4312FA00480C49 /* TimerDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A4ED72FF2D3B9F9300C01289 /* Build configuration list for PBXNativeTarget "HappyOrder" */;
+			buildConfigurationList = A4A0D9BA2D4312FA00480C49 /* Build configuration list for PBXNativeTarget "TimerDemo" */;
 			buildPhases = (
-				A4ED72ED2D3B9F9100C01289 /* Sources */,
-				A4ED72EE2D3B9F9100C01289 /* Frameworks */,
-				A4ED72EF2D3B9F9100C01289 /* Resources */,
+				A4A0D9A72D4312FA00480C49 /* Sources */,
+				A4A0D9A82D4312FA00480C49 /* Frameworks */,
+				A4A0D9A92D4312FA00480C49 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = HappyOrder;
-			productName = HappyOrder;
-			productReference = A4ED72F12D3B9F9100C01289 /* HappyOrder.app */;
+			name = TimerDemo;
+			productName = TimerDemo;
+			productReference = A4A0D9AB2D4312FA00480C49 /* TimerDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A4ED72E92D3B9F9100C01289 /* Project object */ = {
+		A4A0D9A32D4312FA00480C49 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					A4ED72F02D3B9F9100C01289 = {
+					A4A0D9AA2D4312FA00480C49 = {
 						CreatedOnToolsVersion = 15.3;
 					};
 				};
 			};
-			buildConfigurationList = A4ED72EC2D3B9F9100C01289 /* Build configuration list for PBXProject "HappyOrder" */;
+			buildConfigurationList = A4A0D9A62D4312FA00480C49 /* Build configuration list for PBXProject "TimerDemo" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -122,46 +121,45 @@
 				en,
 				Base,
 			);
-			mainGroup = A4ED72E82D3B9F9100C01289;
-			productRefGroup = A4ED72F22D3B9F9100C01289 /* Products */;
+			mainGroup = A4A0D9A22D4312FA00480C49;
+			productRefGroup = A4A0D9AC2D4312FA00480C49 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A4ED72F02D3B9F9100C01289 /* HappyOrder */,
+				A4A0D9AA2D4312FA00480C49 /* TimerDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A4ED72EF2D3B9F9100C01289 /* Resources */ = {
+		A4A0D9A92D4312FA00480C49 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4ED72FC2D3B9F9300C01289 /* Preview Assets.xcassets in Resources */,
-				A4ED72F92D3B9F9300C01289 /* Assets.xcassets in Resources */,
+				A4A6A7D72D43265500495CCD /* bebebep.mp3 in Resources */,
+				A4A0D9B62D4312FA00480C49 /* Preview Assets.xcassets in Resources */,
+				A4A0D9B32D4312FA00480C49 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A4ED72ED2D3B9F9100C01289 /* Sources */ = {
+		A4A0D9A72D4312FA00480C49 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4ED72F72D3B9F9100C01289 /* ContentView.swift in Sources */,
-				A4ED73072D3BF6ED00C01289 /* MainCategoryView.swift in Sources */,
-				A4ED72F52D3B9F9100C01289 /* HappyOrderApp.swift in Sources */,
-				A4ED73032D3BA10E00C01289 /* MainBannerView.swift in Sources */,
-				A4ED73052D3BEBD700C01289 /* MainTabView.swift in Sources */,
-				A405368D2D4070EA00C1C70E /* MainBrandView.swift in Sources */,
+				A4A0D9B12D4312FA00480C49 /* ContentView.swift in Sources */,
+				A4A6A7D92D43318000495CCD /* TimePickerView.swift in Sources */,
+				A4A6A7DB2D4358F900495CCD /* FinishedView.swift in Sources */,
+				A4A0D9AF2D4312FA00480C49 /* TimerDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A4ED72FD2D3B9F9300C01289 /* Debug */ = {
+		A4A0D9B82D4312FA00480C49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -213,18 +211,18 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		A4ED72FE2D3B9F9300C01289 /* Release */ = {
+		A4A0D9B92D4312FA00480C49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -270,94 +268,89 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		A4ED73002D3B9F9300C01289 /* Debug */ = {
+		A4A0D9BB2D4312FA00480C49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TimerDemo/TimerDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"HappyOrder/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TimerDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4MCJUQCSXW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.likelion.HappyOrder;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.likelion.TimerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		A4ED73012D3B9F9300C01289 /* Release */ = {
+		A4A0D9BC2D4312FA00480C49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TimerDemo/TimerDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"HappyOrder/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"TimerDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = 4MCJUQCSXW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
-					"@executable_path/Frameworks",
+					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = kr.co.likelion.HappyOrder;
+				PRODUCT_BUNDLE_IDENTIFIER = kr.co.likelion.TimerDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A4ED72EC2D3B9F9100C01289 /* Build configuration list for PBXProject "HappyOrder" */ = {
+		A4A0D9A62D4312FA00480C49 /* Build configuration list for PBXProject "TimerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A4ED72FD2D3B9F9300C01289 /* Debug */,
-				A4ED72FE2D3B9F9300C01289 /* Release */,
+				A4A0D9B82D4312FA00480C49 /* Debug */,
+				A4A0D9B92D4312FA00480C49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A4ED72FF2D3B9F9300C01289 /* Build configuration list for PBXNativeTarget "HappyOrder" */ = {
+		A4A0D9BA2D4312FA00480C49 /* Build configuration list for PBXNativeTarget "TimerDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A4ED73002D3B9F9300C01289 /* Debug */,
-				A4ED73012D3B9F9300C01289 /* Release */,
+				A4A0D9BB2D4312FA00480C49 /* Debug */,
+				A4A0D9BC2D4312FA00480C49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A4ED72E92D3B9F9100C01289 /* Project object */;
+	rootObject = A4A0D9A32D4312FA00480C49 /* Project object */;
 }
