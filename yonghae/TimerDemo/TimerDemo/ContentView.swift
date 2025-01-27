@@ -33,10 +33,8 @@ struct ContentView: View {
         }
         .padding()
         .onReceive(timer) { _ in
-            if isStart {
-                if timeReminding > 0 {
+            if isStart && timeReminding > 0 {
                     timeReminding -= 1
-                }
             }
         }
     }
@@ -122,7 +120,6 @@ struct ContentView: View {
         }
         .offset(y: 50)
     }
-    
     
     // 시 * 분 * 초를 다 계산해서 형식에 맞추는 함수
     private func timeFormat(time second: Int) -> String {
