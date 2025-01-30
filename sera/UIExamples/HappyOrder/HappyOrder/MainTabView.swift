@@ -10,9 +10,9 @@ import SwiftUI
 struct MainTabView: View {
     var body: some View {
         HStack(spacing: 0) {
-            TabView(selected: true)
-            TabView(selected: false)
-            TabView(selected: false)
+            TabItemView(title: "바로배달", selected: true)
+            TabItemView(title: "바로픽업", selected: false)
+            TabItemView(title: "예약", selected: false)
             /* for-each문 사용
                 ForEach(1...3, id: \.self) { _ in
                     TabView(selected: Bool)
@@ -22,13 +22,14 @@ struct MainTabView: View {
     }
 }
 
-struct TabView: View {
+struct TabItemView: View {
+    var title: String = "바로배달"
     var selected: Bool = false
     
     var body: some View {
         //ZStack(alignment: .bottom) {
         VStack {
-            Text("바로 배달")
+            Text("\(title)")
                 .font(.system(size: 20))
                 .fontWeight(selected ? .medium : .regular)
                 .frame(maxWidth: .infinity)

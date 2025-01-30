@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A405368D2D4070EA00C1C70E /* MainBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405368C2D4070EA00C1C70E /* MainBrandView.swift */; };
+		A40CB6842D4B8CFD00C1BCF5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40CB6832D4B8CF800C1BCF5 /* TestView.swift */; };
+		A40CB6862D4B8ED400C1BCF5 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40CB6852D4B8ED000C1BCF5 /* Constant.swift */; };
+		A4A6A7DD2D4B72EB00495CCD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A6A7DC2D4B72EB00495CCD /* MainView.swift */; };
 		A4ED72F52D3B9F9100C01289 /* HappyOrderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED72F42D3B9F9100C01289 /* HappyOrderApp.swift */; };
 		A4ED72F72D3B9F9100C01289 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4ED72F62D3B9F9100C01289 /* ContentView.swift */; };
 		A4ED72F92D3B9F9300C01289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A4ED72F82D3B9F9300C01289 /* Assets.xcassets */; };
@@ -19,6 +22,9 @@
 
 /* Begin PBXFileReference section */
 		A405368C2D4070EA00C1C70E /* MainBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBrandView.swift; sourceTree = "<group>"; };
+		A40CB6832D4B8CF800C1BCF5 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		A40CB6852D4B8ED000C1BCF5 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		A4A6A7DC2D4B72EB00495CCD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A4ED72F12D3B9F9100C01289 /* HappyOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4ED72F42D3B9F9100C01289 /* HappyOrderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyOrderApp.swift; sourceTree = "<group>"; };
 		A4ED72F62D3B9F9100C01289 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,7 +67,10 @@
 			children = (
 				A4ED72F42D3B9F9100C01289 /* HappyOrderApp.swift */,
 				A4ED72F62D3B9F9100C01289 /* ContentView.swift */,
+				A40CB6832D4B8CF800C1BCF5 /* TestView.swift */,
+				A4A6A7DC2D4B72EB00495CCD /* MainView.swift */,
 				A4ED73042D3BEBD700C01289 /* MainTabView.swift */,
+				A40CB6852D4B8ED000C1BCF5 /* Constant.swift */,
 				A4ED73022D3BA10E00C01289 /* MainBannerView.swift */,
 				A4ED73062D3BF6ED00C01289 /* MainCategoryView.swift */,
 				A405368C2D4070EA00C1C70E /* MainBrandView.swift */,
@@ -150,8 +159,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4ED72F72D3B9F9100C01289 /* ContentView.swift in Sources */,
+				A4A6A7DD2D4B72EB00495CCD /* MainView.swift in Sources */,
+				A40CB6862D4B8ED400C1BCF5 /* Constant.swift in Sources */,
 				A4ED73072D3BF6ED00C01289 /* MainCategoryView.swift in Sources */,
 				A4ED72F52D3B9F9100C01289 /* HappyOrderApp.swift in Sources */,
+				A40CB6842D4B8CFD00C1BCF5 /* TestView.swift in Sources */,
 				A4ED73032D3BA10E00C01289 /* MainBannerView.swift in Sources */,
 				A4ED73052D3BEBD700C01289 /* MainTabView.swift in Sources */,
 				A405368D2D4070EA00C1C70E /* MainBrandView.swift in Sources */,
@@ -221,6 +233,8 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -276,6 +290,8 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_STRICT_CONCURRENCY = minimal;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
