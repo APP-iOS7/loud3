@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:widgets_test/listScreen.dart';
 
 class DopeScreen extends StatefulWidget {
   const DopeScreen({super.key});
@@ -9,6 +10,7 @@ class DopeScreen extends StatefulWidget {
 }
 
 class _DopeScreenState extends State<DopeScreen> {
+  bool isScrollEnd = false;
   final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,11 @@ class _DopeScreenState extends State<DopeScreen> {
         children: [
           PageView(
             controller: _pageController,
+            onPageChanged: (int value) {
+              setState(() {
+                isScrollEnd = (value == 2);
+              });
+            },
             children: [
               _firstPage(),
               _secondPage(),
@@ -25,7 +32,39 @@ class _DopeScreenState extends State<DopeScreen> {
           ),
           Container(
             alignment: const Alignment(0, 0.75),
-            child: SmoothPageIndicator(controller: _pageController, count: 3),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () => _pageController.jumpToPage(2),
+                  child: const Text("건너뛰기"),
+                ),
+                SmoothPageIndicator(
+                  controller: _pageController,
+                  count: 3,
+                  effect: ExpandingDotsEffect(
+                    dotColor: Colors.white.withOpacity(0.5),
+                    activeDotColor: Colors.white,
+                  ),
+                ),
+                isScrollEnd
+                    ? GestureDetector(
+                        onTap: () =>
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                          "ListScreenPage",
+                          (_) => false,
+                        ),
+                        child: const Text("이동"),
+                      )
+                    : GestureDetector(
+                        onTap: () => _pageController.nextPage(
+                          duration: const Duration(milliseconds: 500),
+                          curve: Curves.easeOut,
+                        ),
+                        child: const Text("다음"),
+                      ),
+              ],
+            ),
           )
         ],
       ),
