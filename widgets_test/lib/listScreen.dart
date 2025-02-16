@@ -39,7 +39,10 @@ class ListScreenPage extends StatelessWidget {
           },
         ),
       ),
-      routes: dataSet.fold<Map<String, WidgetBuilder>>({}, (prev, data) {
+      routes: dataSet.fold<Map<String, WidgetBuilder>>({
+        'ListScreenPage': (BuildContext context) =>
+            ListScreenPage(dataSet: dataSet),
+      }, (prev, data) {
         prev.addAll(data.route);
         return prev;
       }),
