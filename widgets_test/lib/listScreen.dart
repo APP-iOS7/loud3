@@ -23,8 +23,17 @@ class ListScreenPage extends StatelessWidget {
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               leading: data.imagePath == 'none'
-                  ? const Icon(Icons.image_not_supported_outlined)
-                  : const Text("이미지 잇음!!"),
+                  ? const AspectRatio(
+                      aspectRatio: 1,
+                      child: Icon(
+                        Icons.image_not_supported_outlined,
+                        size: 40,
+                      ),
+                    )
+                  : AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.asset(data.imagePath),
+                    ),
               subtitle: Text(
                 "${data.subTitle} / ${data.createdAt.year}년 ${data.createdAt.month}월 ${data.createdAt.day}일",
                 style: TextStyle(
