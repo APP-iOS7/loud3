@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
+// IOS : 성공
+// Android는 SDK 이슈로 안되는걸로 보임.
 class Notiservice {
   final notificationsPlugin = FlutterLocalNotificationsPlugin();
 
