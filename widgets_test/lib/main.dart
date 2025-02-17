@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:widgets_test/compoenent/TestScreen.dart';
+import 'package:widgets_test/compoenent/Notification.dart';
 import 'package:widgets_test/compoenent/dopeScreen.dart';
 import 'package:widgets_test/listScreen.dart';
 import 'package:widgets_test/model/ListModel.dart';
+import 'package:widgets_test/service/NotiService.dart';
 
 // data setting
 final List<Listmodel> dataSet = [
@@ -14,16 +15,15 @@ final List<Listmodel> dataSet = [
   ),
   Listmodel(
     createdAt: DateTime(2025, 2, 17),
-    title: "Test 스크린",
-    subTitle: "test 페이지 PageView",
-    route: {'TestScreen': (_) => const TestScreen()},
+    title: "Notification 기능 테스트",
+    subTitle: "로컬의 알림 설정 및 기능",
+    route: {'NotificationScreen': (_) => const NotificationScreen()},
   ),
 ];
 
 void main() {
-  runApp(
-    ListScreenPage(
-      dataSet: dataSet,
-    ),
-  );
+  WidgetsFlutterBinding.ensureInitialized();
+
+  Notiservice().initNotification();
+  runApp(ListScreenPage(dataSet: dataSet));
 }
