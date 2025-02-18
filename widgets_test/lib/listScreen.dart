@@ -19,11 +19,12 @@ class ListScreenPage extends StatelessWidget {
 
             return ListTile(
               title: Text(
-                data.title,
+                data.title, // 여기 보시면 const 들이 있는데요..? 저는 생각하고 쓰지 않습니다 :)
                 style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
+              ), // 그리고 저장을 하면..?
               leading: data.imagePath == 'none'
                   ? const AspectRatio(
+                      // 저를 따라 하십숑
                       aspectRatio: 1,
                       child: Icon(
                         Icons.image_not_supported_outlined,
@@ -55,6 +56,7 @@ class ListScreenPage extends StatelessWidget {
         prev.addAll(data.route);
         return prev;
       }),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:widgets_test/compoenent/DropAndDown.dart';
 import 'package:widgets_test/compoenent/Notification.dart';
 import 'package:widgets_test/compoenent/dopeScreen.dart';
+import 'package:widgets_test/compoenent/FutureBuilderView.dart';
 import 'package:widgets_test/listScreen.dart';
 import 'package:widgets_test/model/ListModel.dart';
 import 'package:widgets_test/service/NotiService.dart';
@@ -27,6 +28,12 @@ final List<Listmodel> dataSet = [
     title: "Drop & Down",
     subTitle: "드롭다운 메뉴 테스트",
     route: {'DropAndDownScreen': (_) => const DropAndDownScreen()},
+  ),
+  Listmodel(
+    createdAt: DateTime(2025, 2, 18),
+    title: "API 수신 Test",
+    subTitle: "Json 데이터 받아와서 view 전환",
+    route: {'FutureBuilderView': (_) => const FutureBuilderView()},
   ),
 ];
 
