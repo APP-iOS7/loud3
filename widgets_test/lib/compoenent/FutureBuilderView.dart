@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:widgets_test/model/User.dart';
 import 'package:widgets_test/service/ApiTest.dart';
 

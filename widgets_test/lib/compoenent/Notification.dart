@@ -21,3 +21,6 @@ class NotificationScreen extends StatelessWidget {
     );
   }
 }
+
+// 회고 
+// 알림 설정이 13버젼부터 권한 요청이 따로 없음 그러므로 권한을 직접 주면 됨... ㅠ ㅠ ㅠ
