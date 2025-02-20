@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:widgets_test/compoenent/DropAndDown.dart';
+import 'package:widgets_test/compoenent/FireBaseCloud.dart';
 import 'package:widgets_test/compoenent/Notification.dart';
 import 'package:widgets_test/compoenent/dopeScreen.dart';
 import 'package:widgets_test/compoenent/FutureBuilderView.dart';
@@ -35,10 +37,17 @@ final List<Listmodel> dataSet = [
     subTitle: "Json 데이터 받아와서 view 전환",
     route: {'FutureBuilderView': (_) => const FutureBuilderView()},
   ),
+  Listmodel(
+    createdAt: DateTime(2025, 2, 20),
+    title: "Firebase 테스트",
+    subTitle: "firestore에 doc 업데이트",
+    route: {'FireBaseCloud': (_) => const FireBaseCloud()},
+  ),
 ];
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
   Notiservice().initNotification();
   runApp(ListScreenPage(dataSet: dataSet));
