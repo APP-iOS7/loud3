@@ -1,8 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:widgets_test/compoenent/DropAndDown.dart';
 import 'package:widgets_test/compoenent/FireBaseAuthPage.dart';
 import 'package:widgets_test/compoenent/Notification.dart';
+import 'package:widgets_test/compoenent/SupabaseAuthPage.dart';
 import 'package:widgets_test/compoenent/dopeScreen.dart';
 import 'package:widgets_test/compoenent/FutureBuilderView.dart';
 import 'package:widgets_test/listScreen.dart';
@@ -40,14 +43,24 @@ final List<Listmodel> dataSet = [
   Listmodel(
     createdAt: DateTime(2025, 2, 20),
     title: "Firebase Auth",
-    subTitle: "firebase login & register",
+    subTitle: "firebase 로그인 & 회원가입",
     route: {'FireBaseAuthPage': (_) => const FireBaseAuthPage()},
+  ),
+  Listmodel(
+    createdAt: DateTime(2025, 2, 21),
+    title: "Supabase Auth",
+    subTitle: "Supabase 로그인 & 회원가입",
+    route: {'SupabaseAuthPage': (_) => const SupabaseAuthPage()},
   ),
 ];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: '.env');
+  String supaProjectURL = 'https://zkxbduvlkjbyhmardefo.supabase.co';
+  String supaApiKey = dotenv.get("SUPABASE_APIKEY");
   await Firebase.initializeApp();
+  await Supabase.initialize(url: supaProjectURL, anonKey: supaApiKey);
 
   Notiservice().initNotification();
   runApp(ListScreenPage(dataSet: dataSet));
