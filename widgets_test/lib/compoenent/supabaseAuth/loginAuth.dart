@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginAuthPage extends StatefulWidget {
@@ -18,57 +17,6 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
   String? userIdErrorMessage;
   String? passwordErrorMessage;
 
-  Future<void> loadingState() {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
-  }
-
-  // 로그인 함수
-  void loginMethod() async {
-    try {
-      initializeErrorText(); // 초기화
-      loadingState();
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: userIdController.text, password: passwordController.text);
-      Navigator.of(context).pop();
-    } on FirebaseAuthException catch (e) {
-      Navigator.of(context).pop();
-      if (e.code == 'wrong-password') {
-        passwordErrorMessage = '잘못된 패스워드 입니다';
-      } else if (e.code == 'invalid-email') {
-        userIdErrorMessage = '잘못된 이메일입니다';
-      }
-      if (e.code == 'invalid-credential') {
-        // 로그인 실패
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: const Text("로그인 실패!!"),
-              actions: [
-                TextButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    child: const Text('확인')),
-              ],
-            );
-          },
-        );
-      }
-      setState(() {});
-    }
-  }
-
-  void initializeErrorText() {
-    userIdErrorMessage = null;
-    passwordErrorMessage = null;
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,7 +33,7 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
                     const Icon(Icons.lock, size: 80),
                     const SizedBox(height: 40),
                     const Text(
-                      "Firebase 로그인을 해봐요!!",
+                      "Supabase 로그인을 해봐요!!",
                       style: TextStyle(
                         fontSize: 20,
                       ),
@@ -106,7 +54,7 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
                     ),
                     const SizedBox(height: 20),
                     _CustomButton(
-                      onTap: loginMethod,
+                      onTap: () {},
                     ),
                     const SizedBox(height: 10),
                     _customNavigation(

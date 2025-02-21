@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_test/compoenent/supabaseAuth/homeScreen.dart';
+import 'package:widgets_test/compoenent/supabaseAuth/loginAuth.dart';
+import 'package:widgets_test/compoenent/supabaseAuth/registerAuth.dart';
 
 class SupabaseAuthPage extends StatefulWidget {
   const SupabaseAuthPage({super.key});
@@ -18,9 +21,20 @@ class _SupabaseAuthPageState extends State<SupabaseAuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        body: Center(
-      child: Text("hello world Supabase"),
-    ));
+    return Scaffold(
+      body: StreamBuilder(
+        stream: null,
+        builder: (BuildContext context, snapshot) {
+          if (snapshot.hasData) {
+            print(snapshot.data);
+            return const HomeScreen();
+          } else {
+            return showLoginPage
+                ? LoginAuthPage(onTap: toggleShowPage)
+                : RegisterAuthPage(onTap: toggleShowPage);
+          }
+        },
+      ),
+    );
   }
 }
