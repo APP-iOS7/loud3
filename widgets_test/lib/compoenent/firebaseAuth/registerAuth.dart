@@ -1,5 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:widgets_test/compoenent/firebaseAuth/loginAuth.dart';
+import 'package:widgets_test/compoenent/firebaseAuth/passwordMismatch.dart';
 
 class RegisterAuthPage extends StatefulWidget {
   const RegisterAuthPage({
@@ -14,6 +15,57 @@ class RegisterAuthPage extends StatefulWidget {
 class _RegisterAuthPage extends State<RegisterAuthPage> {
   final TextEditingController userIdController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmController = TextEditingController();
+  String? userIdErrorMessage;
+  String? passwordErrorMessage;
+  String? confirmErrorMessage;
+
+  // loading 뷰
+  Future<void> loadingState() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
+  }
+
+  // 회원가입 함수
+  void registerMethod() async {
+    try {
+      initializeErrorText();
+      loadingState();
+      if (passwordController.text != confirmController.text) {
+        // 다르면 Error
+        throw PasswordMismatchException(
+            code: 'passwordMismatch', message: "비밀번호가 서로 다릅니다");
+      }
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: userIdController.text, password: passwordController.text);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-email') {
+        userIdErrorMessage = '이메일 형식을 입력해주세요';
+      } else if (e.code == 'weak-password') {
+        passwordErrorMessage = '최소 6자리를 입력해주세요';
+      } else if (e.code == 'email-already-in-use') {
+        userIdErrorMessage = '이미 존재하는 이메일 입니다';
+      }
+    } on PasswordMismatchException catch (e) {
+      confirmErrorMessage = e.toString();
+    }
+    Navigator.of(context).pop();
+    setState(() {});
+  }
+
+  // 사용한 ErrorText를 초기화 합니다
+  void initializeErrorText() {
+    userIdErrorMessage = null;
+    passwordErrorMessage = null;
+    confirmErrorMessage = null;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,24 +89,28 @@ class _RegisterAuthPage extends State<RegisterAuthPage> {
                     ),
                     const SizedBox(height: 20),
                     _CustomTextField(
-                      userIdController: userIdController,
+                      controller: userIdController,
                       obscureText: false,
                       hintText: "이메일을 입력해주세요",
+                      errorText: userIdErrorMessage,
                     ),
                     const SizedBox(height: 10),
                     _CustomTextField(
-                      userIdController: passwordController,
+                      controller: passwordController,
                       obscureText: true,
                       hintText: "비밀번호를 입력해주세요",
+                      errorText: passwordErrorMessage,
                     ),
+                    const SizedBox(height: 10),
                     _CustomTextField(
-                      userIdController: passwordController,
+                      controller: confirmController,
                       obscureText: true,
                       hintText: "비밀번호 확인을 위해 입력해주세요",
+                      errorText: confirmErrorMessage,
                     ),
                     const SizedBox(height: 20),
                     _CustomButton(
-                      onTap: () {},
+                      onTap: registerMethod,
                     ),
                     const SizedBox(height: 10),
                     _customNavigation(
@@ -72,7 +128,6 @@ class _RegisterAuthPage extends State<RegisterAuthPage> {
 // 로그인 이동 또는 회원가임
 class _customNavigation extends StatelessWidget {
   const _customNavigation({
-    super.key,
     required this.onTap,
   });
 
@@ -117,16 +172,19 @@ class _CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 22),
-      alignment: Alignment.center,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.all(Radius.circular(8))),
-      child: const Text(
-        '로그인',
-        style: TextStyle(color: Colors.white),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 22),
+        alignment: Alignment.center,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.all(Radius.circular(8))),
+        child: const Text(
+          '회원가입',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }
@@ -136,24 +194,27 @@ class _CustomButton extends StatelessWidget {
 class _CustomTextField extends StatelessWidget {
   const _CustomTextField({
     super.key,
-    required this.userIdController,
+    required this.controller,
     required this.obscureText,
     required this.hintText,
+    required this.errorText,
   });
 
-  final TextEditingController userIdController;
+  final TextEditingController controller;
   final bool obscureText;
   final String hintText;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: userIdController,
-      obscureText: false,
+      controller: controller,
+      obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
         fillColor: Colors.grey.shade200,
         filled: true,
+        errorText: errorText,
         hintStyle: TextStyle(color: Colors.grey[500]),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),

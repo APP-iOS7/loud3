@@ -16,10 +16,58 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
   final TextEditingController userIdController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
+  String? userIdErrorMessage;
+  String? passwordErrorMessage;
 
+  Future<void> loadingState() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
+  }
+
+  // 로그인 함수
   void loginMethod() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: userIdController.text, password: passwordController.text);
+    try {
+      initializeErrorText(); // 초기화
+      loadingState();
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: userIdController.text, password: passwordController.text);
+      Navigator.of(context).pop();
+    } on FirebaseAuthException catch (e) {
+      Navigator.of(context).pop();
+      if (e.code == 'wrong-password') {
+        passwordErrorMessage = '잘못된 패스워드 입니다';
+      } else if (e.code == 'invalid-email') {
+        userIdErrorMessage = '잘못된 이메일입니다';
+      }
+      if (e.code == 'invalid-credential') {
+        // 로그인 실패
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text("로그인 실패!!"),
+              actions: [
+                TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: const Text('확인')),
+              ],
+            );
+          },
+        );
+      }
+      setState(() {});
+    }
+  }
+
+  void initializeErrorText() {
+    userIdErrorMessage = null;
+    passwordErrorMessage = null;
+    setState(() {});
   }
 
   @override
@@ -48,16 +96,18 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
                       userIdController: userIdController,
                       obscureText: false,
                       hintText: "이메일을 입력해주세요",
+                      errorText: userIdErrorMessage,
                     ),
                     const SizedBox(height: 10),
                     _CustomTextField(
                       userIdController: passwordController,
                       obscureText: true,
                       hintText: "비밀번호를 입력해주세요",
+                      errorText: passwordErrorMessage,
                     ),
                     const SizedBox(height: 20),
                     _CustomButton(
-                      onTap: () {},
+                      onTap: loginMethod,
                     ),
                     const SizedBox(height: 10),
                     _customNavigation(
@@ -120,16 +170,19 @@ class _CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 22),
-      alignment: Alignment.center,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.all(Radius.circular(8))),
-      child: const Text(
-        '로그인',
-        style: TextStyle(color: Colors.white),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 22),
+        alignment: Alignment.center,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.all(Radius.circular(8))),
+        child: const Text(
+          '로그인',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }
@@ -142,21 +195,24 @@ class _CustomTextField extends StatelessWidget {
     required this.userIdController,
     required this.obscureText,
     required this.hintText,
+    required this.errorText,
   });
 
   final TextEditingController userIdController;
   final bool obscureText;
   final String hintText;
+  final String? errorText;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: userIdController,
-      obscureText: false,
+      obscureText: obscureText,
       decoration: InputDecoration(
         hintText: hintText,
         fillColor: Colors.grey.shade200,
         filled: true,
+        errorText: errorText,
         hintStyle: TextStyle(color: Colors.grey[500]),
         enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
