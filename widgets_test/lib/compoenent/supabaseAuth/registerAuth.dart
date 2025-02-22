@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:widgets_test/compoenent/SupabaseAuthPage.dart';
+import 'package:widgets_test/compoenent/firebaseAuth/passwordMismatch.dart';
 
 class RegisterAuthPage extends StatefulWidget {
   const RegisterAuthPage({
@@ -17,6 +20,76 @@ class _RegisterAuthPage extends State<RegisterAuthPage> {
   String? userIdErrorMessage;
   String? passwordErrorMessage;
   String? confirmErrorMessage;
+
+  void _loadingView() async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+  }
+
+  void _initsializeErrorText() {
+    userIdErrorMessage = null;
+    passwordErrorMessage = null;
+    confirmErrorMessage = null;
+  }
+
+  void registerMethod() async {
+    try {
+      _initsializeErrorText();
+      _loadingView();
+
+      if (passwordController.text != confirmController.text) {
+        // 다르면 Error
+        throw PasswordMismatchException(
+            code: 'passwordMismatch', message: "비밀번호가 서로 다릅니다");
+      }
+
+      await Supabase.instance.client.auth.signUp(
+        email: userIdController.text,
+        password: passwordController.text,
+      );
+      Navigator.of(context).pop();
+    } on AuthException catch (e) {
+      Navigator.of(context).pop();
+      return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("${e.code}"),
+            content: Text(e.message),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text("확인"),
+              )
+            ],
+          );
+        },
+      );
+    } on PasswordMismatchException catch (e) {
+      Navigator.of(context).pop();
+      return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text(e.code),
+            content: Text(e.message),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text("확인"),
+              )
+            ],
+          );
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +135,7 @@ class _RegisterAuthPage extends State<RegisterAuthPage> {
                     ),
                     const SizedBox(height: 20),
                     _CustomButton(
-                      onTap: () {},
+                      onTap: registerMethod,
                     ),
                     const SizedBox(height: 10),
                     _customNavigation(

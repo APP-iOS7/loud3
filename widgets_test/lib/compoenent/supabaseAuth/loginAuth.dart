@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginAuthPage extends StatefulWidget {
   const LoginAuthPage({
@@ -16,6 +17,44 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
   final TextEditingController passwordController = TextEditingController();
   String? userIdErrorMessage;
   String? passwordErrorMessage;
+
+  void _loadingView() async {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+  }
+
+  void loginMEthod() async {
+    try {
+      _loadingView();
+      await Supabase.instance.client.auth.signInWithPassword(
+          email: userIdController.text, password: passwordController.text);
+      Navigator.of(context).pop();
+    } on AuthException catch (e) {
+      Navigator.of(context).pop();
+
+      return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("${e.code}"),
+            content: Text(e.message),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text("확인"),
+              )
+            ],
+          );
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +93,7 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
                     ),
                     const SizedBox(height: 20),
                     _CustomButton(
-                      onTap: () {},
+                      onTap: loginMEthod,
                     ),
                     const SizedBox(height: 10),
                     _customNavigation(
