@@ -32,7 +32,6 @@ class _SupabaseAuthPageState extends State<SupabaseAuthPage> {
             );
           }
           final session = snapshot.hasData ? snapshot.data!.session : null;
-          print('session : $session');
           if (session != null) {
             return const HomeScreen();
           } else {
