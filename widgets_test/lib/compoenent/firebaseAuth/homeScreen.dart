@@ -37,22 +37,33 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   // update
-  void updateTodo({required String doc_id, required String editText}) {
-    FirebaseFirestore.instance
-        .collection('posts')
-        .doc(doc_id)
-        .update({'content': editText}).then((_) {
-      print("문서 업데이트 성공!");
-    }).catchError((error) {
-      print("문서 업데이트 실패: $error");
-    });
+  void updateTodo(
+      {required String doc_id,
+      required String postEmail,
+      required String editText}) {
+    if (currentUser.email == postEmail) {
+      FirebaseFirestore.instance
+          .collection('posts')
+          .doc(doc_id)
+          .update({'content': editText}).then((_) {
+        print("문서 업데이트 성공!");
+      }).catchError((error) {
+        print("문서 업데이트 실패: $error");
+      });
+    } else {
+      print("다른 이메일의 정보는 수정 할 수 없습니다!!");
+    }
     Navigator.of(context).pop();
   }
 
   // delete
-  void deleteTodo({required String doc_id}) {
+  void deleteTodo({required String doc_id, required String userEmail}) {
     try {
-      FirebaseFirestore.instance.collection('posts').doc(doc_id).delete();
+      if (currentUser.email == userEmail) {
+        FirebaseFirestore.instance.collection('posts').doc(doc_id).delete();
+      } else {
+        print("다른 이메일의 정보는 삭제 할 수 없습니다!!");
+      }
     } catch (e) {
       print("문서 삭제 성공..? : $e");
     }
@@ -118,8 +129,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               Row(
                                 children: [
                                   IconButton(
-                                      onPressed: () =>
-                                          deleteTodo(doc_id: post['doc_id']),
+                                      onPressed: () => deleteTodo(
+                                            doc_id: post['doc_id'],
+                                            userEmail: post['userEmail'],
+                                          ),
                                       icon: const Icon(Icons.delete, size: 20)),
                                   IconButton(
                                     onPressed: () {
@@ -143,6 +156,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                               TextButton(
                                                   onPressed: () => updateTodo(
                                                         doc_id: post['doc_id'],
+                                                        postEmail:
+                                                            post['userEmail'],
                                                         editText:
                                                             editController.text,
                                                       ),

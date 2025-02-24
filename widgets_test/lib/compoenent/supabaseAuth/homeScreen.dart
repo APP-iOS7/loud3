@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:widgets_test/compoenent/supabaseAuth/Post.dart';
-import 'package:widgets_test/compoenent/supabaseAuth/UserWithPost.dart';
 import 'package:widgets_test/compoenent/supabaseAuth/post_database.dart';
 
 class HomeScreen extends StatefulWidget {

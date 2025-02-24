@@ -1,10 +1,10 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:widgets_test/compoenent/supabaseAuth/Post.dart';
-import 'package:widgets_test/compoenent/supabaseAuth/UserWithPost.dart';
 
 class PostDatabase {
   final database = Supabase.instance.client.from('post');
-
+  final currentUser =
+      Supabase.instance.client.auth.currentUser; // 객체가 생성되면 유저 또한 있음
   //create
   Future<void> insertPost(Post newPost) async {
     try {
@@ -21,13 +21,23 @@ class PostDatabase {
   );
   //update
   Future<void> updatePost(Post oldPost, String newContent) async {
-    await database
-        .update({'content': newContent}).eq('id', oldPost.id.toString());
+    final postEmail = await getEmail(oldPost.user_id);
+    if (currentUser!.email == postEmail) {
+      await database
+          .update({'content': newContent}).eq('id', oldPost.id.toString());
+    } else {
+      print('다른 사람이 작성한 Todo입니다');
+    }
   }
 
   //delete
   Future<void> deletePost(Post post) async {
-    await database.delete().eq('id', post.id!);
+    final postEmail = await getEmail(post.user_id);
+    if (currentUser!.email == postEmail) {
+      await database.delete().eq('id', post.id!);
+    } else {
+      print('다른 사람이 작성한 Todo입니다');
+    }
   }
 
   //이메일 가져오기

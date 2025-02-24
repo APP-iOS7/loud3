@@ -29,7 +29,7 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
     );
   }
 
-  void loginMEthod() async {
+  void loginMethod() async {
     try {
       _loadingView();
       await Supabase.instance.client.auth.signInWithPassword(
@@ -93,7 +93,7 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
                     ),
                     const SizedBox(height: 20),
                     _CustomButton(
-                      onTap: loginMEthod,
+                      onTap: loginMethod,
                     ),
                     const SizedBox(height: 10),
                     _customNavigation(
