@@ -35,7 +35,9 @@ class _LoginAuthPageState extends State<LoginAuthPage> {
       loadingState();
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: userIdController.text, password: passwordController.text);
-      Navigator.of(context).pop();
+      if (mounted) {
+        Navigator.of(context).pop();
+      }
     } on FirebaseAuthException catch (e) {
       Navigator.of(context).pop();
       if (e.code == 'wrong-password') {
