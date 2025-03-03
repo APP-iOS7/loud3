@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_feature_test/model/ListModel.dart';
+import 'package:music_feature_test/theme.dart';
 
 class ListScreenPage extends StatelessWidget {
   final List<Listmodel> dataSet;
@@ -8,6 +9,9 @@ class ListScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: whiteMode(),
+      darkTheme: darkMode(),
+      themeMode: ThemeMode.system,
       home: Scaffold(
         body: ListView.builder(
           itemCount: dataSet.length,
