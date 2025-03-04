@@ -11,7 +11,7 @@ Future<void> downloadVideo(String videoId, YoutubeExplode yt) async {
 
   // 저장할 경로 설정
   var dir = await getApplicationDocumentsDirectory();
-  var audioFile = File('${dir.path}audio.mp4');
+  var audioFile = File('${dir.path}/audio.mp4');
   print(dir);
   print(audioFile);
 
@@ -31,7 +31,7 @@ Future<void> readAudioFile() async {
 
   // 읽을 파일 경로
   var filePath = '${directory.path}/audio.mp4';
-
+  print(filePath);
   // 파일 존재 여부 확인
   var file = File(filePath);
 
