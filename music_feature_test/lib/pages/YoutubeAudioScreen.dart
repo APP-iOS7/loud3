@@ -86,24 +86,22 @@ class _YoutubeAudioScreenState extends State<YoutubeAudioScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-          audioModel == null
-              ? Center(child: CircularProgressIndicator())
-              : Column(
-                children: [
-                  Image.network(audioModel!.thumbnails),
-                  Text(audioModel!.title),
-                  Text(audioModel!.author),
-                  Text('${audioModel!.duration}'),
-                  ElevatedButton(
-                    onPressed:
-                        () => downloadMethod(
-                          url: "https://www.youtube.com/watch?v=2A8G_VsQqDI",
-                        ),
-                    child: Text("다운로드"),
+      body: audioModel == null
+          ? Center(child: CircularProgressIndicator())
+          : Column(
+              children: [
+                Image.network(audioModel!.thumbnails),
+                Text(audioModel!.title),
+                Text(audioModel!.author),
+                Text('${audioModel!.duration}'),
+                ElevatedButton(
+                  onPressed: () => downloadMethod(
+                    url: "https://www.youtube.com/watch?v=2A8G_VsQqDI",
                   ),
-                ],
-              ),
+                  child: Text("다운로드"),
+                ),
+              ],
+            ),
     );
   }
 

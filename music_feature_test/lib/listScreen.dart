@@ -23,20 +23,19 @@ class ListScreenPage extends StatelessWidget {
                 data.title,
                 style: const TextStyle(fontWeight: FontWeight.bold),
               ), // 그리고 저장을 하면..?
-              leading:
-                  data.imagePath == 'none'
-                      ? const AspectRatio(
-                        // 저를 따라 하십숑
-                        aspectRatio: 1,
-                        child: Icon(
-                          Icons.image_not_supported_outlined,
-                          size: 40,
-                        ),
-                      )
-                      : AspectRatio(
-                        aspectRatio: 1,
-                        child: Image.asset(data.imagePath),
+              leading: data.imagePath == 'none'
+                  ? const AspectRatio(
+                      // 저를 따라 하십숑
+                      aspectRatio: 1,
+                      child: Icon(
+                        Icons.image_not_supported_outlined,
+                        size: 40,
                       ),
+                    )
+                  : AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.asset(data.imagePath),
+                    ),
               subtitle: Text(
                 "${data.subTitle} / ${data.createdAt.year}년 ${data.createdAt.month}월 ${data.createdAt.day}일",
                 style: TextStyle(
@@ -46,16 +45,16 @@ class ListScreenPage extends StatelessWidget {
                 ),
               ),
               trailing: const Icon(Icons.arrow_circle_right_outlined),
-              onTap:
-                  () => Navigator.of(context).pushNamed(data.route.keys.first),
+              onTap: () =>
+                  Navigator.of(context).pushNamed(data.route.keys.first),
             );
           },
         ),
       ),
       routes: dataSet.fold<Map<String, WidgetBuilder>>(
         {
-          'ListScreenPage':
-              (BuildContext context) => ListScreenPage(dataSet: dataSet),
+          'ListScreenPage': (BuildContext context) =>
+              ListScreenPage(dataSet: dataSet),
         },
         (prev, data) {
           prev.addAll(data.route);
